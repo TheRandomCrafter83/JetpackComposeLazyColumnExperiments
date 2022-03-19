@@ -4,8 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Colors
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -38,13 +37,17 @@ class MainActivity : ComponentActivity() {
                     ) {
                         EntryFields(onAddClick = { user ->
                             listItems = listItems + listOf(user)
-                        })
+                        }, modifier=Modifier
+                            .fillMaxWidth()
+                            .height(IntrinsicSize.Min)
+                        )
 
                         DisplayList(
                             listItems as ArrayList<User>,
                             modifier = Modifier
                                 .fillMaxSize()
                                 .background(MaterialTheme.colors.LightGray)
+
                         )
                     }
                 }

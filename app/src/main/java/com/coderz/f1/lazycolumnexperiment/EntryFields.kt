@@ -1,5 +1,6 @@
 package com.coderz.f1.lazycolumnexperiment
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.ZeroCornerSize
 import androidx.compose.foundation.text.KeyboardActions
@@ -14,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
@@ -25,24 +27,18 @@ val emailFocusRequester: FocusRequester = FocusRequester()
 fun EntryFields(onAddClick: (user: User) -> Unit, modifier:Modifier=Modifier) {
     var nameField: String by remember { mutableStateOf(String()) }
     var emailField: String by remember { mutableStateOf(String()) }
-    Box(
-        modifier = modifier
-    )
-    {
         Row(modifier = Modifier
-            .fillMaxSize()
-            /*.height(IntrinsicSize.Min)*/) {
+            .fillMaxWidth(), verticalAlignment = Alignment.CenterVertically
+        ) {
             Column(modifier = Modifier
                 .fillMaxWidth(.8f)
-                .padding(8.dp)
-                /*.height(IntrinsicSize.Min)*/) {
+                .padding(8.dp)) {
 
                 OutlinedTextField(nameField,
                     shape = MaterialTheme.shapes.small.copy(bottomEnd= ZeroCornerSize, bottomStart = ZeroCornerSize),
                     singleLine = true,
                     modifier = Modifier
                         .fillMaxWidth()
-//                        .height(IntrinsicSize.Min)
                         .focusRequester(userNameFocusRequester),
                     onValueChange = {
                         nameField = it
@@ -71,13 +67,12 @@ fun EntryFields(onAddClick: (user: User) -> Unit, modifier:Modifier=Modifier) {
                     },
                     maxLines=1
                 )
-                Spacer(modifier = Modifier.height(2.dp))
+                Spacer(modifier = Modifier.height(8.dp))
                 OutlinedTextField(emailField,
                     shape = MaterialTheme.shapes.small.copy(bottomEnd= ZeroCornerSize, bottomStart = ZeroCornerSize),
                     singleLine = true,
                     modifier = Modifier
                         .fillMaxWidth()
-//                        .height(IntrinsicSize.Min)
                         .focusRequester(emailFocusRequester),
                     onValueChange = {
                         emailField = it
@@ -113,8 +108,8 @@ fun EntryFields(onAddClick: (user: User) -> Unit, modifier:Modifier=Modifier) {
             }
             Column(
                 modifier = Modifier
-                    .fillMaxSize(),
-//                    .height(IntrinsicSize.Min),
+                    .fillMaxWidth()
+                    .height(48.dp),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             )
@@ -132,9 +127,9 @@ fun EntryFields(onAddClick: (user: User) -> Unit, modifier:Modifier=Modifier) {
                         Icons.Filled.AddCircle,
                         contentDescription = "Add",
                         tint = MaterialTheme.colors.primary
+
                     )
                 }
             }
         }
     }
-}

@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun DisplayList(users: ArrayList<User>, modifier: Modifier = Modifier) {
-    LazyColumn(modifier = modifier) {
+    LazyColumn(modifier = modifier,contentPadding=PaddingValues(8.dp),verticalArrangement=Arrangement.spacedBy(8.dp)) {
         itemsIndexed(users) { _, user ->
             ItemCard(user)
         }
@@ -26,8 +26,7 @@ fun DisplayList(users: ArrayList<User>, modifier: Modifier = Modifier) {
 fun ItemCard(user: User) {
     Card(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(8.dp),
+            .fillMaxWidth(),
         RoundedCornerShape(4.dp),
     ) {
         Column(modifier = Modifier.padding(8.dp)) {

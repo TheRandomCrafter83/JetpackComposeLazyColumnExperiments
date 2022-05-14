@@ -73,7 +73,8 @@ fun EntryFields(onAddClick: (user: User) -> Unit, modifier:Modifier=Modifier) {
                     singleLine = true,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .focusRequester(emailFocusRequester),
+                        .focusRequester(emailFocusRequester)
+                        ,
                     onValueChange = {
                         emailField = it
                     },
